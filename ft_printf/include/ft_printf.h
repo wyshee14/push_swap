@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/14 17:12:04 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/16 17:53:26 by wshee            ###   ########.fr       */
+/*   Created: 2024/11/29 12:52:36 by wshee             #+#    #+#             */
+/*   Updated: 2024/12/03 19:52:43 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include <stdlib.h>
-# include "../libft/libft.h"
-# include "../../ft_printf/include/ft_printf.h"
+# include <unistd.h>
+# include <stdarg.h>
 
-typedef struct s_list
-{
-	int			number;
-	int			index;
-	struct s_list	*next;
-	struct s_list	*prev;
-}	t_list;
+int	ft_printchar(int c);
+int	ft_printstr(char *s);
+int	ft_printaddress(void *ptr);
+int	ft_printnbr(int n);
+int	ft_print_unsigned_nbr(unsigned int n);
+int	ft_printhexa(unsigned int n, char print);
+int	ft_printf(const char *fmt, ...);
 
 #endif
