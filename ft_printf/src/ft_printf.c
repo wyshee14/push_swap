@@ -6,11 +6,11 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 19:14:27 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/03 19:54:18 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/20 16:15:51 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 int	print_format(const char print, va_list args)
 {

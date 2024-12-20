@@ -6,16 +6,16 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:06:40 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/17 13:42:27 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/20 21:00:21 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	swap(t_list **stack)
+void	swap(t_stack **stack)
 {
-	t_list	*first;
-	t_list	*second;
+	t_stack	*first;
+	t_stack	*second;
 
 	if (*stack == NULL || (*stack) -> next == NULL)
 		return ;
@@ -30,19 +30,19 @@ void	swap(t_list **stack)
 	*stack = second;
 }
 
-void sa(t_list **stack_a)
+void sa(t_stack **stack_a)
 {
 	swap(stack_a);
 	ft_printf("sa\n");
 }
 
-void sb(t_list **stack_b)
+void sb(t_stack **stack_b)
 {
 	swap(stack_b);
 	ft_printf("sb\n");
 }
 
-void ss(t_list **stack_a, t_list **stack_b)
+void ss(t_stack **stack_a, t_stack **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);

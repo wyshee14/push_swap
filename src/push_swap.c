@@ -6,42 +6,28 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:45:07 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/16 14:29:22 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/20 21:01:18 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-t_list	*init_stack(t_list *stack, int argc, char **argv)
-{
-	t_list	*new;
-	int	i;
-
-	i = 1;
-	while (argv[i])
-	{
-		stack = ft_lstnew(argv);
-		i++;
-	}
-}
-
+#include "../include/push_swap.h"
 #include <stdio.h>
+
 int main(int argc, char **argv)
 {
-	t_list **stack_a;
-	t_list **stack_b;
+	t_stack **stack_a;
+	t_stack **stack_b;
+	int i;
 
-	a = NULL;
-	b = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
+	i = 0;
 	if (argc < 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
 	else if (argc == 2)
-		agrv = ft_split(argv[1], ' ');
-	else
-	{
-		char *argv =
-	}
+		argv = ft_split(argv[1], ' ');
+	init_stack(&stack_a, argv[i]);
 }

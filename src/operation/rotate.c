@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:18:14 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/17 17:10:53 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/20 21:00:09 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 // set the firstnode as the last node
 // detach the first node and update the pointer to the second node
 // update the pointer to rotate in the stack
-void rotate(t_list **stack)
+void rotate(t_stack **stack)
 {
-	t_list *first_node;
-	t_list *last_node;
+	t_stack *first_node;
+	t_stack *last_node;
 
 	if (*stack == NULL || ((*stack) -> next) == NULL)
 		return ;
@@ -34,19 +34,19 @@ void rotate(t_list **stack)
 	last_node -> next = NULL;
 }
 
-void	ra(t_list **stack_a)
+void	ra(t_stack **stack_a)
 {
 	rotate(stack_a);
 	ft_printf("ra\n");
 }
 
-void	rb(t_list **stack_b)
+void	rb(t_stack **stack_b)
 {
 	rotate(stack_b);
 	ft_printf("rb\n");
 }
 
-void	rr(t_list **stack_a, t_list **stack_b)
+void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);

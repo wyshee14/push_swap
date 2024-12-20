@@ -6,11 +6,11 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 18:21:04 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/03 15:44:02 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/20 16:15:56 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 int	ft_printchar(int c)
 {

@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:41:22 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/17 16:17:54 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/20 20:59:33 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 // Detach the push_node from src
 // check dest is empty, assign first node in the stack, ensure is the first and last node
 // if dest is not empty, assign the push_node to the top, pointer dest move to push_node
-void push(t_list **dest, t_list **src)
+void push(t_stack **dest, t_stack **src)
 {
-	t_list *push_node;
+	t_stack *push_node;
 
 	if (*src == NULL)
 		return ;
@@ -44,13 +44,13 @@ void push(t_list **dest, t_list **src)
 	}
 }
 
-void pa(t_list **stack_a, t_list **stack_b)
+void pa(t_stack **stack_a, t_stack **stack_b)
 {
 	push (stack_a, stack_b);
 	ft_printf("pa\n");
 }
 
-void pb(t_list **stack_b, t_list **stack_a)
+void pb(t_stack **stack_b, t_stack **stack_a)
 {
 	push (stack_b, stack_a);
 	ft_printf("pb\n");

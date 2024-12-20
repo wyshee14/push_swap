@@ -6,12 +6,13 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:49:18 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/03 19:51:12 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/20 16:22:17 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
+//use unsigned long to handle 64bits ptr 0xFFFFFFFFFFFFFFFF
 static int	ft_hexadec(unsigned long address)
 {
 	char	*hex;
@@ -43,10 +44,10 @@ int	ft_printaddress(void *ptr)
 	return (count);
 }
 
-//#include <stdio.h>
-// int main(void)
-// {
-// 	int n = 42;
-// 	int count = ft_printaddress(&n);
-// 	printf("\n%d\n", count);
-// }
+#include <stdio.h>
+int main(void)
+{
+	int n = 42;
+	int count = ft_printaddress(&n);
+	printf("\n%d\n", count);
+}
