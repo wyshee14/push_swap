@@ -6,7 +6,7 @@
 #    By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 20:31:35 by wshee             #+#    #+#              #
-#    Updated: 2024/12/23 21:46:02 by wshee            ###   ########.fr        #
+#    Updated: 2024/12/23 22:20:02 by wshee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,9 @@ SRC = $(wildcard $(SRC_DIR)*.c) \
 OBJ_SRC = $(SRC:.c=.o)
 
 all: $(NAME)
-	@make -C libft
 
 $(NAME) : $(OBJ_SRC)
+	@make -C libft
 	ar rcs $(NAME) $(OBJ_SRC)
 
 %.o : %.c
@@ -48,9 +48,11 @@ $(NAME) : $(OBJ_SRC)
 
 clean:
 	rm -rf $(OBJ_SRC)
+	@make -C $(LIBFT_DIR) clean
 
 fclean : clean
 	rm -f $(NAME)
+	@make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
