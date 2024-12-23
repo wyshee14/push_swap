@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:11:53 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/20 21:09:16 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/23 22:04:29 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static long ft_atol(const char *str)
 	i = 0;
 	sign = 1;
 	result = 0;
-	while ((str[i] <= 9 && str[i] >= 13) && str[i] == 32)
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -39,22 +39,22 @@ static long ft_atol(const char *str)
 	return (result);
 }
 
-void **free_stack(t_stack **stack)
+void free_stack(t_stack **stack)
 {
 	t_stack	*temp;
 	t_stack	*current;
 
 	if (!stack)
-		return (NULL);
+		return ;
 	current = *stack;
-	while (stack != NULL)
+	while (current != NULL)
 	{
 		temp = current;
 		current = current -> next;
 		free(temp);
 	}
 	*stack = NULL;
-	ft_printf("Error\n");
+	//ft_printf("Error\n");
 }
 
 int handle_duplicate(t_stack *stack, long nbr)
@@ -66,6 +66,24 @@ int handle_duplicate(t_stack *stack, long nbr)
 	return (0);
 }
 
+int is_numeric(const char *str)
+{
+	int i;
+
+	i = 0;
+	if (str == NULL)
+		return(0);
+	if(str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] != '\0')
+	{
+		if(str[i] >= '0' && str[i] <= 9)
+			return(0);
+		i++;
+	}
+	return(1);
+}
+
 static void append_node(t_stack **stack, long nbr)
 {
 	t_stack	*new_node;
@@ -73,27 +91,50 @@ static void append_node(t_stack **stack, long nbr)
 
 	if (stack == NULL)
 		return ;
-	new_node = ft_lstnew(nbr);
-	if (!(*stack))
+	new_node = (t_stack *)malloc(sizeof(t_list));
+	if (new_node == NULL)
+		return ;
+	new_node -> number = nbr;
+	new_node -> next = NULL;
+	if ((*stack) == NULL)
+	{
 		*stack = new_node;
+		new_node -> prev = NULL;
+	}
 	else
-		ft_lstadd_back(stack, new_node);
+	{
+		last_node = *stack;
+		while (last_node->next != NULL)
+			last_node = last_node -> next;
+		last_node -> next = new_node;
+		new_node -> prev = last_node;
+	}
 }
 
-t_stack	init_stack(t_stack **stack, char **argv)
+void	init_stack(t_stack **stack, char **argv)
 {
 	long	nbr;
 	int		i;
 
+	i = 0;
 	while (argv[i])
 	{
-		if (!ft_isdigit(argv[i]));
+		if (!is_numeric(argv[i]))
+		{
 			free_stack(stack);
+			ft_printf("Error\n");
+		}
 		nbr = ft_atol(argv[i]);
 		if (nbr < INT_MIN || nbr > INT_MAX)
+		{
 			free_stack(stack);
-		if (handle_duplicate(stack, nbr))
+			ft_printf("Error\n");
+		}
+		if (handle_duplicate((*stack), nbr))
+		{
 			free_stack(stack);
+			ft_printf("Error\n");
+		}
 		append_node(stack, nbr);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:45:07 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/20 21:01:18 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/23 19:29:33 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,12 @@ int main(int argc, char **argv)
 	}
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-	init_stack(&stack_a, argv[i]);
+	int num_word = count_word(argv[1], ' ');
+	init_stack(stack_a, &argv[i]);
+	ra(stack_a);
+	while (i < num_word)
+	{
+		printf("%s ", argv[i]);
+		i++;
+	}
 }

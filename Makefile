@@ -5,32 +5,40 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/03 14:34:26 by wshee             #+#    #+#              #
-#    Updated: 2024/12/03 16:15:27 by wshee            ###   ########.fr        #
+#    Created: 2024/12/23 20:31:35 by wshee             #+#    #+#              #
+#    Updated: 2024/12/23 21:46:02 by wshee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-
-CC = cc
+#Program Name
+NAME = push_swap
 
 #The -I (uppercase i) flag is used to add a directory to the list of directories
 #the compiler searches for header files (#include directives).
+#Directories
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
 INC_DIR = include/
+SRC_DIR = src/
 INC = -I$(INC_DIR)
 
+CC = cc
 CFLAGS = -Wall -Wextra -Werror $(INC)
 
-SRC_DIR = src/
+#Source Directories
+OPERATION_DIR = $(SRC_DIR)operation/
+
+OPERATION_SRC_FILES = push.c	reverse_rotate.c	rotate.c	swap.c
+
 #addprefix <prefix>, <list>
 #<prefix> is the string that added to the beginning of each word
-SRC = $(addprefix $(SRC_DIR), \
-		ft_printf.c		ft_printchar.c	ft_printstr.c	ft_printaddress.c	\
-		ft_printnbr.c	ft_printhexa.c	ft_print_unsigned_nbr.c)
+SRC = $(wildcard $(SRC_DIR)*.c) \
+		$(addprefix $(OPERATION_DIR)/, $(OPERATION_SRC_FILES))
 
 OBJ_SRC = $(SRC:.c=.o)
 
 all: $(NAME)
+	@make -C libft
 
 $(NAME) : $(OBJ_SRC)
 	ar rcs $(NAME) $(OBJ_SRC)
