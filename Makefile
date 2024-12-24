@@ -6,7 +6,7 @@
 #    By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 20:31:35 by wshee             #+#    #+#              #
-#    Updated: 2024/12/23 22:20:02 by wshee            ###   ########.fr        #
+#    Updated: 2024/12/24 14:28:53 by wshee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC_DIR = src/
 INC = -I$(INC_DIR)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror $(INC)
+CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR)
 
 #Source Directories
 OPERATION_DIR = $(SRC_DIR)operation/
@@ -41,7 +41,7 @@ all: $(NAME)
 
 $(NAME) : $(OBJ_SRC)
 	@make -C libft
-	ar rcs $(NAME) $(OBJ_SRC)
+	$(CC) $(CFLAGS) $(OBJ_SRC) $(LIBFT) -o $(NAME)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@

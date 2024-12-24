@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:12:04 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/23 19:30:36 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/24 16:51:48 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "../libft/libft.h"
-# include "../../ft_printf/include/ft_printf.h"
 
 typedef struct s_stack
 {
