@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:41:22 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/23 22:04:53 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/29 17:36:55 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,3 +55,64 @@ void pb(t_stack **stack_b, t_stack **stack_a)
 	push (stack_b, stack_a);
 	ft_printf("pb\n");
 }
+
+//Main function
+// t_stack *new_node(int value)
+// {
+// 	t_stack *node = malloc(sizeof(t_stack));
+// 	if(!node)
+// 		return (NULL);
+// 	node -> number = value;
+// 	node -> next = NULL;
+// 	node -> prev = NULL;
+// 	return (node);
+// }
+
+// void new_stack_push(t_stack **stack, int value)
+// {
+// 	t_stack *node = new_node(value);
+// 	if(!node)
+// 		return ;
+// 	if (*stack != NULL)
+// 	{
+// 		node -> next = *stack;
+// 		(*stack) -> prev = node;
+// 	}
+// 	*stack = node;
+// }
+
+// void print_stack(t_stack *stack, const char *name)
+// {
+// 	ft_printf("%s: ", name);
+// 	while (stack)
+// 	{
+// 		ft_printf("%d ", stack -> number);
+// 		stack = stack -> next;
+// 	}
+// 	ft_printf("\n");
+// }
+
+// int main()
+// {
+// 	t_stack *stack_a = NULL;
+// 	t_stack *stack_b = NULL;
+
+// 	new_stack_push(&stack_a, 3);
+// 	new_stack_push(&stack_a, 2);
+// 	new_stack_push(&stack_a, 1);
+
+// 	new_stack_push(&stack_b, 6);
+// 	new_stack_push(&stack_b, 5);
+// 	new_stack_push(&stack_b, 4);
+
+// 	print_stack(stack_a, "Stack A");
+// 	print_stack(stack_b, "Stack B");
+
+// 	pa(&stack_a, &stack_b);
+// 	print_stack(stack_a, "Stack A after pa");
+// 	print_stack(stack_b, "Stack A after pa");
+
+// 	pb(&stack_b, &stack_a);
+// 	print_stack(stack_b, "Stack B after pb");
+// 	print_stack(stack_a, "Stack A after pa");
+// }

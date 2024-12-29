@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:18:14 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/23 19:58:27 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/29 18:13:52 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ static void rotate(t_stack **stack)
 	if (*stack == NULL || ((*stack) -> next) == NULL)
 		return ;
 	first_node = *stack;
-	while (first_node -> next != NULL)
-		last_node = first_node -> next;
+	last_node = *stack;
+	while (last_node -> next != NULL)
+		last_node = last_node -> next;
+	*stack = first_node -> next;
+	// (*stack) -> prev = NULL;
 	last_node -> next = first_node;
-	first_node -> prev = last_node;
-	*stack = (*stack) -> next;
-	(*stack) -> prev = NULL;
-	last_node -> next = NULL;
+	// first_node -> prev = last_node;
+	first_node -> next = NULL;
 }
 
 void	ra(t_stack **stack_a)
@@ -53,3 +54,66 @@ void	rr(t_stack **stack_a, t_stack **stack_b)
 	rotate(stack_b);
 	ft_printf("rr\n");
 }
+
+// Main function
+// t_stack *new_node(int value)
+// {
+// 	t_stack *node = malloc(sizeof(t_stack));
+// 	if(!node)
+// 		return (NULL);
+// 	node -> number = value;
+// 	node -> next = NULL;
+// 	node -> prev = NULL;
+// 	return (node);
+// }
+
+// void push(t_stack **stack, int value)
+// {
+// 	t_stack *node = new_node(value);
+// 	if(!node)
+// 		return ;
+// 	if (*stack != NULL)
+// 	{
+// 		node -> next = *stack;
+// 		(*stack) -> prev = node;
+// 	}
+// 	*stack = node;
+// }
+
+// void print_stack(t_stack *stack, const char *name)
+// {
+// 	printf("%s: ", name);
+// 	while (stack)
+// 	{
+// 		printf("%d ", stack -> number);
+// 		stack = stack -> next;
+// 	}
+// 	printf("\n");
+// }
+
+// int main()
+// {
+// 	t_stack *stack_a = NULL;
+// 	t_stack *stack_b = NULL;
+
+// 	push(&stack_a, 3);
+// 	push(&stack_a, 2);
+// 	push(&stack_a, 1);
+
+// 	push(&stack_b, 6);
+// 	push(&stack_b, 5);
+// 	push(&stack_b, 4);
+
+// 	print_stack(stack_a, "Stack A");
+// 	print_stack(stack_b, "Stack B");
+
+// 	ra(&stack_a);
+// 	print_stack(stack_a, "Stack A after ra");
+
+// 	rb(&stack_b);
+// 	print_stack(stack_b, "Stack B after rb");
+
+// 	rr(&stack_a, &stack_b);
+// 	print_stack(stack_a, "Stack A after rr");
+// 	print_stack(stack_b, "Stack B after rr");
+// }
