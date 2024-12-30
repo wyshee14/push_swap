@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:45:07 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/29 22:31:16 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/30 19:09:38 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,21 @@ int stack_sorted(t_stack *stack)
 		stack = stack->next;
 	}
 	return(0);
+}
+
+int stack_size(t_stack *stack)
+{
+	int count;
+
+	count = 0;
+	if(!stack)
+		return(0);
+	while (stack != NULL)
+	{
+		stack = stack->next;
+		count++;
+	}
+	return(count);
 }
 
 int main(int argc, char **argv)
@@ -67,7 +82,9 @@ int main(int argc, char **argv)
 	}
 	if (!stack_sorted(stack_a))
 	{
-		if (stack_len(stack_a) == 2)
+		if (stack_size(stack_a) == 2)
 			sa(&stack_a);
+		else if (stack_size(stack_a) == 3)
+			sort_three(&stack_a);
 	}
 }
