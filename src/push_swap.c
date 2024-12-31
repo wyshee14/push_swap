@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:45:07 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/30 19:09:38 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/31 15:28:46 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 char **get_input(int ac, char **av)
 {
+	if (ac < 2)
+	{
+		ft_printf("Error\n");
+		return (NULL);
+	}
 	char **split;
 	if (ac == 2 && av[1][0] != '\0')
 	{
@@ -22,34 +27,6 @@ char **get_input(int ac, char **av)
 		return(split);
 	}
 	return(av);
-}
-
-int stack_sorted(t_stack *stack)
-{
-	if (!stack)
-		return (0);
-	while (stack != NULL)
-	{
-		if (stack->number > stack->next->number)
-			return(1);
-		stack = stack->next;
-	}
-	return(0);
-}
-
-int stack_size(t_stack *stack)
-{
-	int count;
-
-	count = 0;
-	if(!stack)
-		return(0);
-	while (stack != NULL)
-	{
-		stack = stack->next;
-		count++;
-	}
-	return(count);
 }
 
 int main(int argc, char **argv)
@@ -62,13 +39,7 @@ int main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	i = 0;
-	if (argc < 2)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
-	else
-		input = get_input(argc, argv);
+	input = get_input(argc, argv);
 	while (input[i])
 	{
 		printf("%d: %s\n", i, input[i]);

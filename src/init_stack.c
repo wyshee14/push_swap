@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:11:53 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/29 21:39:33 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/31 15:14:50 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,55 +37,6 @@ static long ft_atol(const char *str)
 	}
 	result *= sign;
 	return (result);
-}
-
-void free_stack(t_stack **stack)
-{
-	t_stack	*temp;
-	t_stack	*current;
-
-	if (!stack)
-		return ;
-	current = *stack;
-	while (current != NULL)
-	{
-		temp = current;
-		current = current -> next;
-		free(temp);
-	}
-	*stack = NULL;
-	//ft_printf("Error\n");
-}
-
-int handle_duplicate(t_stack *stack, long nbr)
-{
-	if (stack == NULL)
-		return (0);
-	while (stack != NULL)
-	{
-		if (stack-> number == nbr)
-			return (1);
-		stack = stack -> next;
-	}
-	return (0);
-}
-
-int is_numeric(const char *str)
-{
-	int i;
-
-	i = 0;
-	if (str == NULL)
-		return(0);
-	if(str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] != '\0')
-	{
-		if(str[i] >= '0' && str[i] <= '9')
-			return(1);
-		i++;
-	}
-	return(0);
 }
 
 static void append_node(t_stack **stack, long nbr)
@@ -124,25 +75,13 @@ void	init_stack(t_stack **stack_a, char **argv)
 	while (argv[i])
 	{
 		if (!is_numeric(argv[i]))
-		{
-			free_stack(stack_a);
-			ft_printf("Error\n");
-			return ;
-		}
+			print_error(stack_a);
 		nbr = ft_atol(argv[i]);
 		//printf("%li\n", nbr);
 		if (nbr < INT_MIN || nbr > INT_MAX)
-		{
-			free_stack(stack_a);
-			ft_printf("Error\n");
-			return ;
-		}
+			print_error(stack_a);
 		if (handle_duplicate((*stack_a), nbr))
-		{
-			free_stack(stack_a);
-			ft_printf("Error\n");
-			return ;
-		}
+			print_error(stack_a);
 		append_node(stack_a, nbr);
 		i++;
 	}

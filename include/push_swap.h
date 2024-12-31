@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:12:04 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/24 16:51:48 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/31 15:26:36 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@ typedef struct s_stack
 
 //Initialize stack
 void	init_stack(t_stack **stack, char **argv);
+
+//Error handling
+int is_numeric(const char *str);
+int handle_duplicate(t_stack *stack, long nbr);
+void free_stack(t_stack **stack);
+void print_error(t_stack **stack_a);
+
+//Sort
+void	sort_three(t_stack **stack_a);
+
+//Utils
+int		stack_sorted(t_stack *stack);
 
 //Operations
 void	pa(t_stack **stack_a, t_stack **stack_b);
