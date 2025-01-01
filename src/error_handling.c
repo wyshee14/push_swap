@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:06:44 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/31 15:18:15 by wshee            ###   ########.fr       */
+/*   Updated: 2024/12/31 16:39:56 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,5 @@ void print_error(t_stack **stack_a)
 {
 	free_stack(stack_a);
 	ft_printf("Error\n");
-	return ;
+	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:12:04 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/31 15:26:36 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/01 22:43:36 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,22 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "../libft/libft.h"
+# include <stdio.h>
 
 typedef struct s_stack
 {
 	int			number;
 	int			index;
+	int			above_median;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
+
+typedef struct s_head
+{
+	t_stack	stack_a;
+	t_stack	stack_b;
+}	t_head;
 
 //Initialize stack
 void	init_stack(t_stack **stack, char **argv);
@@ -36,9 +44,13 @@ void print_error(t_stack **stack_a);
 
 //Sort
 void	sort_three(t_stack **stack_a);
+int		stack_sorted(t_stack *stack);
+int		set_index(t_stack *stack, int min);
+int		above_median(t_stack *stack);
+void	sort_small(t_stack *stack_a, t_stack *stack_b);
 
 //Utils
-int		stack_sorted(t_stack *stack);
+int	stack_size(t_stack *stack);
 
 //Operations
 void	pa(t_stack **stack_a, t_stack **stack_b);

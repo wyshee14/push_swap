@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/31 15:26:03 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/01 18:09:02 by wshee            ###   ########.fr       */
+/*   Created: 2024/12/31 18:37:32 by wshee             #+#    #+#             */
+/*   Updated: 2025/01/01 22:48:13 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int stack_size(t_stack *stack)
-{
-	int count;
+// void	do_sort(t_stack **stack_a, t_stack **stack_b)
+// {
+// 	int size_a;
 
-	count = 0;
-	if(!stack)
-		return(0);
-	while (stack != NULL)
-	{
-		stack = stack->next;
-		count++;
-	}
-	return(count);
-}
+// 	size_a = stack_size(*stack_a);
+// 	if (size_a-- > 3 && !stack_sorted(*stack_a))
+// 		pb(stack_b, stack_a);
+// 	if (size_a-- > 3 && !stack_sorted(*stack_a))
+// 		pb(stack_b, stack_a);
+// 	while (size_a-- > 3 && !stack_sorted(*stack_a))
+// 		set_stack(stack_b, stack_a);
 
-int stack_sorted(t_stack *stack)
-{
-	if (!stack)
-		return (0);
-	while (stack != NULL)
-	{
-		if (stack->number > stack->next->number)
-			return(0);
-		stack = stack->next;
-	}
-	return(1);
-}
+
+// }

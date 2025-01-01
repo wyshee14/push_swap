@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:45:07 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/31 15:28:46 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/01 22:44:28 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 char **get_input(int ac, char **av)
 {
-	if (ac < 2)
+	if(ac < 2)
 	{
 		ft_printf("Error\n");
-		return (NULL);
+		exit(1);
 	}
 	char **split;
 	if (ac == 2 && av[1][0] != '\0')
@@ -26,7 +26,7 @@ char **get_input(int ac, char **av)
 		split = ft_split(av[1], ' ');
 		return(split);
 	}
-	return(av);
+	return(av + 1);
 }
 
 int main(int argc, char **argv)
@@ -46,16 +46,23 @@ int main(int argc, char **argv)
 		i++;
 	}
 	init_stack(&stack_a, input);
+	if (!stack_sorted(stack_a))
+	{
+		int size = stack_size(stack_a);
+		printf("size: %d\n", size);
+		if (stack_size(stack_a) == 2)
+			sa(&stack_a);
+		else if (stack_size(stack_a) <= 15)
+			sort_small(stack_a, stack_b);
+		// else
+		// {
+		// 	set_stack(stack_a);
+		// 	do_sort(stack_a, stack_b);
+		// }
+	}
 	while(stack_a != NULL)
 	{
 		printf("%d\n", stack_a -> number);
 		stack_a = stack_a -> next;
-	}
-	if (!stack_sorted(stack_a))
-	{
-		if (stack_size(stack_a) == 2)
-			sa(&stack_a);
-		else if (stack_size(stack_a) == 3)
-			sort_three(&stack_a);
 	}
 }
