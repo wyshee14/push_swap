@@ -6,27 +6,27 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 16:22:51 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/01 22:47:36 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/02 22:47:17 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
 //set index and position of median in the stack
-int set_index(t_stack *stack, int min)
+void set_index(t_stack *stack, int min)
 {
 	int i;
 
 	i = 0;
 	while (stack->number != min && stack != NULL)
 	{
+		stack->index = i;
 		stack = stack->next;
 		i++;
 	}
-	return(i);
 }
 
-int above_median(t_stack *stack)
+void above_median(t_stack *stack)
 {
 	int median;
 
@@ -37,8 +37,9 @@ int above_median(t_stack *stack)
 			stack->above_median = 1;
 		else
 			stack->above_median = 0;
+		stack = stack->next;
+		//printf("above median: %d\n", stack->above_median);
 	}
-	return(stack->above_median);
 }
 
 //set the target node in stack b

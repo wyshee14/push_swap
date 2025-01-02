@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack_a.c                                     :+:      :+:    :+:   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:11:53 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/31 15:14:50 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/02 22:04:34 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void append_node(t_stack **stack, long nbr)
 
 	if (stack == NULL)
 		return ;
-	new_node = (t_stack *)malloc(sizeof(t_list));
+	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (new_node == NULL)
 		return ;
 	new_node -> number = nbr;

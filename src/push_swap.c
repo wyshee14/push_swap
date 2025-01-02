@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:45:07 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/01 22:44:28 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/02 22:15:37 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int main(int argc, char **argv)
 	init_stack(&stack_a, input);
 	if (!stack_sorted(stack_a))
 	{
-		int size = stack_size(stack_a);
-		printf("size: %d\n", size);
+		//int size = stack_size(stack_a);
+		//printf("size: %d\n", size);
 		if (stack_size(stack_a) == 2)
 			sa(&stack_a);
 		else if (stack_size(stack_a) <= 15)
@@ -64,5 +64,10 @@ int main(int argc, char **argv)
 	{
 		printf("%d\n", stack_a -> number);
 		stack_a = stack_a -> next;
+	}
+	while(stack_b != NULL)
+	{
+		printf("%d\n", stack_b -> number);
+		stack_b = stack_b -> next;
 	}
 }
