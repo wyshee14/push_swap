@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:12:36 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/29 19:46:28 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/03 14:47:35 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,21 @@ static void	reverse_rotate(t_stack **stack)
 {
 	t_stack *last_node;
 
-	if (*stack == NULL || ((*stack) -> next) == NULL)
+	if (*stack == NULL || ((*stack)->next) == NULL)
 		return ;
 	last_node = *stack;
-	while (last_node -> next != NULL)
+	while (last_node->next != NULL)
 		last_node = last_node -> next;
-	last_node -> prev -> next = NULL;
-	last_node -> next = *stack;
-	last_node -> prev = NULL;
-	(*stack) -> prev = last_node;
+	//if(last_node->prev != NULL)
+	// printf("number: %d\n", (last_node)->number);
+	// if((last_node)->prev != NULL)
+	// 	printf("prev: %d\n", (last_node)->prev->number);
+	// if((last_node)->next != NULL)
+	// 	printf("next: %d\n", (last_node)->next->number);
+	last_node->prev->next = NULL;
+	last_node->next = *stack;
+	last_node->prev = NULL;
+	(*stack)->prev = last_node;
 	(*stack) = last_node;
 }
 

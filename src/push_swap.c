@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:45:07 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/02 22:15:37 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/03 15:08:44 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int main(int argc, char **argv)
 	init_stack(&stack_a, input);
 	if (!stack_sorted(stack_a))
 	{
-		//int size = stack_size(stack_a);
-		//printf("size: %d\n", size);
 		if (stack_size(stack_a) == 2)
 			sa(&stack_a);
 		else if (stack_size(stack_a) <= 15)
@@ -60,14 +58,18 @@ int main(int argc, char **argv)
 		// 	do_sort(stack_a, stack_b);
 		// }
 	}
+	int size_a = stack_size(stack_a);
+	printf("size a: %d\n", size_a);
+	int size_b = stack_size(stack_b);
+	printf("size b: %d\n", size_b);
 	while(stack_a != NULL)
 	{
-		printf("%d\n", stack_a -> number);
-		stack_a = stack_a -> next;
+		printf("a: %d\n", stack_a->number);
+		stack_a = stack_a->next;
 	}
 	while(stack_b != NULL)
 	{
-		printf("%d\n", stack_b -> number);
-		stack_b = stack_b -> next;
+		printf("b: %d\n", stack_b->number);
+		stack_b = stack_b->next;
 	}
 }

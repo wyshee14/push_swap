@@ -6,7 +6,7 @@
 #    By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 20:31:35 by wshee             #+#    #+#              #
-#    Updated: 2025/01/02 22:17:23 by wshee            ###   ########.fr        #
+#    Updated: 2025/01/03 13:50:01 by wshee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ INC_DIR = include/
 SRC_DIR = src/
 INC = -I$(INC_DIR)
 
-CC = cc -g3 -O0
+CC = cc -g3 -O0 -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR)
 
 #Source Directories

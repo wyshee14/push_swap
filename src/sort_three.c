@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 18:37:39 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/02 22:50:26 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/03 15:12:48 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	sort_three(t_stack **stack_a)
 	t_stack *max_node;
 
 	max_node = find_max(*stack_a);
-	//printf("max node: %d\n", max_node->number);
+	printf("max node: %d\n", max_node->number);
 	if ((*stack_a) == max_node)
 		ra(stack_a);
 	else if ((*stack_a)->next == max_node)
@@ -72,26 +72,33 @@ void	sort_three(t_stack **stack_a)
 		sa(stack_a);
 }
 
+//push the minimum number to stack b
+//find the minimum in stack a (set as target)
+//find the position of minimum in stack a
+//if position above median ra, else rra, until the target is at the top of stack
+//push to stack b(pb) until left 3 in stack a (in loop)
 void get_three(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *min_node;
 	int target;
+	int i;
+	int median;
 
 	while (stack_size(*stack_a) > 3)
 	{
 		min_node = find_min(*stack_a);
 		target = min_node->number;
-		set_index(*stack_a, target);
-		above_median(*stack_a);
+		printf("target: %d\n", target);
+		i = set_index(*stack_a, target);
+		printf("i: %d\n", i);
+		median = stack_size(*stack_a) / 2;
+		printf("median: %d\n", median);
 		while((*stack_a)->number != target)
 		{
-			if ((*stack_a)->above_median == 1)
+			if (i < median)
 				ra(stack_a);
 			else
 				rra(stack_a);
-			printf("index: %d\n", (*stack_a)->index);
-			printf("above median: %d\n", (*stack_a)->above_median);
-			(*stack_a) = (*stack_a) -> next;
 		}
 		pb(stack_b, stack_a);
 	}
@@ -105,6 +112,15 @@ void	sort_small(t_stack *stack_a, t_stack *stack_b)
 	{
 		get_three(&stack_a, &stack_b);
 		sort_three(&stack_a);
+		int size_a = stack_size(stack_a);
+		printf("size a: %d\n", size_a);
+		while(stack_a != NULL)
+		{
+			printf("%d\n", stack_a->number);
+			stack_a = stack_a->next;
+		}
+		int size_b = stack_size(stack_b);
+		printf("size b: %d\n", size_b);
 		while (stack_b)
 			pa(&stack_a, &stack_b);
 	}

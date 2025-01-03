@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:12:04 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/02 22:40:40 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/03 13:19:47 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void print_error(t_stack **stack_a);
 //Sort
 void	sort_three(t_stack **stack_a);
 int		stack_sorted(t_stack *stack);
-void	set_index(t_stack *stack, int min);
+int	set_index(t_stack *stack, int min);
 void	above_median(t_stack *stack);
 void	sort_small(t_stack *stack_a, t_stack *stack_b);
 

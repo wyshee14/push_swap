@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "/home/wshee/42/push_swap",
-			"args": [6 5 4],
+			"args": [./push_swap 5 3 7 9 10 2 1 8 4 6],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],
