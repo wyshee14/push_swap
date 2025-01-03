@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:41:22 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/03 14:23:00 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/03 15:59:23 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,6 @@ static void	push(t_stack **dest, t_stack **src)
 		(*dest) -> prev = push_node;
 		*dest = push_node;
 	}
-	// while(*src != NULL)
-	// {
-	// 	printf("a: %d\n", (*src) -> number);
-	// 	(*src) = (*src) -> next;
-	// }
-	// while(*dest != NULL)
-	// {
-	// 	printf("b: %d\n", (*dest) -> number);
-	// 	(*dest) = (*dest) -> next;
-	// }
 }
 
 void pa(t_stack **stack_a, t_stack **stack_b)

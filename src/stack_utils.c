@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:26:03 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/01 18:09:02 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/03 18:00:34 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,15 @@ int stack_sorted(t_stack *stack)
 		stack = stack->next;
 	}
 	return(1);
+}
+
+t_stack *get_last_node(t_stack *last)
+{
+	if (!last)
+		return (NULL);
+	while (last->next != NULL)
+	{
+		last = last->next;
+	}
+	return (last);
 }

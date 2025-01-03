@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:45:07 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/03 15:08:44 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/03 15:59:07 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,9 @@ int main(int argc, char **argv)
 		if (stack_size(stack_a) == 2)
 			sa(&stack_a);
 		else if (stack_size(stack_a) <= 15)
-			sort_small(stack_a, stack_b);
-		// else
-		// {
-		// 	set_stack(stack_a);
-		// 	do_sort(stack_a, stack_b);
-		// }
+			sort_small(&stack_a, &stack_b);
+		else
+			sort_big(stack_a, stack_b);
 	}
 	int size_a = stack_size(stack_a);
 	printf("size a: %d\n", size_a);

@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:12:04 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/03 13:19:47 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/03 18:03:30 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ void	sort_three(t_stack **stack_a);
 int		stack_sorted(t_stack *stack);
 int	set_index(t_stack *stack, int min);
 void	above_median(t_stack *stack);
-void	sort_small(t_stack *stack_a, t_stack *stack_b);
+void	sort_small(t_stack **stack_a, t_stack **stack_b);
 
 //Utils
 int	stack_size(t_stack *stack);
+t_stack *get_last_node(t_stack *last);
 
 //Operations
 void	pa(t_stack **stack_a, t_stack **stack_b);

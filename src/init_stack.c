@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:11:53 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/02 22:04:34 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/03 18:02:29 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ static void append_node(t_stack **stack, long nbr)
 	}
 	else
 	{
-		last_node = *stack;
-		while (last_node->next != NULL)
-			last_node = last_node -> next;
+		last_node = get_last_node(*stack);
 		last_node -> next = new_node;
 		new_node -> prev = last_node;
 	}

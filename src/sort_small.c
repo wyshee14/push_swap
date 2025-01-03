@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 18:37:39 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/03 15:12:48 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/03 15:44:06 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void get_three(t_stack **stack_a, t_stack **stack_b)
 	int i;
 	int median;
 
+	i = 0;
 	while (stack_size(*stack_a) > 3)
 	{
 		min_node = find_min(*stack_a);
@@ -104,24 +105,15 @@ void get_three(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void	sort_small(t_stack *stack_a, t_stack *stack_b)
+void	sort_small(t_stack **stack_a, t_stack **stack_b)
 {
-	if (stack_size(stack_a) <= 3)
-		sort_three(&stack_a);
+	if (stack_size(*stack_a) <= 3)
+		sort_three(stack_a);
 	else
 	{
-		get_three(&stack_a, &stack_b);
-		sort_three(&stack_a);
-		int size_a = stack_size(stack_a);
-		printf("size a: %d\n", size_a);
-		while(stack_a != NULL)
-		{
-			printf("%d\n", stack_a->number);
-			stack_a = stack_a->next;
-		}
-		int size_b = stack_size(stack_b);
-		printf("size b: %d\n", size_b);
-		while (stack_b)
-			pa(&stack_a, &stack_b);
+		get_three(stack_a, stack_b);
+		sort_three(stack_a);
+		while (*stack_b != NULL)
+			pa(stack_a, stack_b);
 	}
 }

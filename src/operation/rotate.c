@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:18:14 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/03 14:45:53 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/03 16:00:14 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ static void rotate(t_stack **stack)
 	t_stack *first_node;
 	t_stack *last_node;
 
-	if (*stack == NULL || ((*stack) -> next) == NULL)
+	if (*stack == NULL || ((*stack)->next) == NULL)
 		return ;
 	first_node = *stack;
 	last_node = *stack;
-	while (last_node -> next != NULL)
-		last_node = last_node -> next;
-	*stack = first_node -> next;
-	(*stack) -> prev = NULL;
-	last_node -> next = first_node;
-	first_node -> prev = last_node;
-	first_node -> next = NULL;
+	while (last_node->next != NULL)
+		last_node = last_node->next;
+	*stack = first_node->next;
+	(*stack)->prev = NULL;
+	last_node->next = first_node;
+	first_node->prev = last_node;
+	first_node->next = NULL;
 }
 
 void	ra(t_stack **stack_a)
