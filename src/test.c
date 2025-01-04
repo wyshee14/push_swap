@@ -26,7 +26,7 @@ struct Node* partition(struct Node* low,
     int pivot = high->data;
 
     // Pointer to place smaller elements
-    struct Node* i = low->prev;
+    struct Node* i = low->prev;i = (i == NULL) ? low : i->next;
 
     // Traverse the list to rearrange nodes
     for (struct Node* j = low; j != high;

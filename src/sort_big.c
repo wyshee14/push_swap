@@ -6,73 +6,110 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 18:37:32 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/03 22:53:18 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/04 22:52:08 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void swap(t_stack *i, t_stack *j)
+static void ft_swap(int *i, int *j)
 {
 	int temp;
 
-	temp = i->number;
-	i->number = j->number;
-	j->number = temp;
+	temp = *i;
+	*i = *j;
+	*j = temp;
 }
 
-t_stack *partition(t_stack *low, t_stack *high)
+int partition(int *arr, int low, int high)
 {
-	int pivot;
-	t_stack *i;
-	t_stack *j;
+	int pivot_number;
+	int i;
+	int j;
 
-	pivot = high->number;
-	i = low->prev;
+	pivot_number = arr[high];
+	i = low - 1;
 	j = low;
-	while (j != high)
+	while (j < high)
 	{
-		if (j->number <= pivot)
+		if (arr[j] < pivot_number)
 		{
-			if (i == NULL)
-				i = low;
-			else
-				i = i->next;
-			swap(i, j);
+			i++;
+			ft_swap(&arr[i], &arr[j]);
 		}
-		j = j-> next;
+		j++;
 	}
-	if (i == NULL)
-		i = low;
-	else
-		i = i->next;
-	swap(i, high);
-	return (i);
+	ft_swap(&arr[i + 1], &arr[high]);
+	return (i + 1);
 }
 
-//Find the partiion node(pivot)
+//Find the partition index(pivot)
 //first recursively sort the left half
 //second recursively sort the right half
-void quicksort(t_stack **stack_a, t_stack *low, t_stack *high)
+void quicksort(int *arr, int low, int high)
 {
-	t_stack *pivot;
+	int pivot;
 
-	if (low != NULL && high != NULL && low != high && low != high->next)
+	if (low < high)
 	{
-		pivot = partition(low, high);
-		quicksort(*stack_a, low, pivot->prev);
-		quicksort(*stack_a, pivot->next, high);
+		pivot = partition(arr, low, high);
+		quicksort(arr, low, pivot - 1);
+		quicksort(arr, pivot + 1, high);
 	}
+}
+
+void init_array(int *arr, t_stack *stack_a)
+{
+	int	i;
+
+	i = 0;
+	while (stack_a)
+	{
+		arr[i] = stack_a->number;
+		stack_a = stack_a->next;
+		i++;
+	}
+}
+
+int set_index_to_stack(int *arr,int low, int high, int key)
+{
+	int mid;
+
+	mid = 0;
+	while(low <= high)
+	{
+		mid = low + ((high - low) / 2);
+		if (arr[mid] == key)
+			return(key);
+		else if (arr[mid] < key)
+			low = mid + 1;
+		else
+			high = mid - 1;
+	}
+	return(-1);
+}
+
+void pre_sort(t_stack **stack_a)
+{
+	int *arr;
+	int index;
+	int size;
+
+	size = stack_size(*stack_a);
+	arr = (int *)malloc(sizeof(int) * size);
+	init_array(arr, stack_a);
+	quicksort(stack_a, 0, size - 1);
+	while (stack_a)
+	{
+		index = set_index_to_stack(arr, 0, size - 1, (*stack_a)->number);
+		if (index != -1)
+			(*stack_a)->index = index;
+		(*stack_a) = (*stack_a)->next;
+	}
+	free(arr);
 }
 
 void	sort_big(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *low;
-	t_stack *high;
-
-	low = *stack_a;
-	high = get_last_node(*stack_a);
-	quicksort(stack_a, low, high);
-
-
+	pre_sort(stack_a);
 }
