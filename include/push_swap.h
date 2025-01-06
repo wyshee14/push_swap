@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:12:04 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/03 18:03:30 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/06 16:58:42 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@
 
 typedef struct s_stack
 {
-	int			number;
-	int			index;
-	int			above_median;
+	int				number;
+	int				index;
+	int				push_cost;
+	int				above_median;
+	int				cheapest;
+	struct s_stack	*target_node;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;

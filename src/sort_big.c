@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 18:37:32 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/04 22:52:08 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/06 20:26:10 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,15 @@ void quicksort(int *arr, int low, int high)
 	}
 }
 
-void init_array(int *arr, t_stack *stack_a)
+void init_array(int *arr, t_stack *stack)
 {
 	int	i;
 
 	i = 0;
-	while (stack_a)
+	while (stack)
 	{
-		arr[i] = stack_a->number;
-		stack_a = stack_a->next;
+		arr[i] = stack->number;
+		stack = stack->next;
 		i++;
 	}
 }
@@ -109,7 +109,36 @@ void pre_sort(t_stack **stack_a)
 	free(arr);
 }
 
+void partition_in_b(t_stack **stack_a, t_stack **stack_b)
+{
+	int partition_size;
+	int n;
+	int pb_count;
+	int size_a;
+
+	partition_size = stack_size(*stack_a) / 20 + 30;
+	n = 1;
+	pb_count = 0;
+	size_a = stack_size(stack_a);
+	while (size_a > 0)
+	{
+		if((*stack_a)->index < (partition_size * n))
+		{
+			pb(stack_b, stack_a);
+			if ((*stack_a)->index < partition_size * n - (partition_size / 2))
+				rb(stack_b);
+			pb_count++;
+		}
+		else
+			ra(stack_a);
+		if ((pb_count == partition_size * n) && (partition_size * n) < size_a)
+			n++;
+	}
+}
+
 void	sort_big(t_stack **stack_a, t_stack **stack_b)
 {
 	pre_sort(stack_a);
+	partition_in_b(stack_a, stack_b);
+	sort_back(stack_a, stack_b);
 }
