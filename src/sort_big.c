@@ -5,127 +5,94 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/31 18:37:32 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/06 20:26:10 by wshee            ###   ########.fr       */
+/*   Created: 2025/01/06 19:58:59 by wshee             #+#    #+#             */
+/*   Updated: 2025/01/07 20:06:34 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void ft_swap(int *i, int *j)
+//find the second largest number in stack b
+static int second_max_push(t_stack **stack_b, int *arr_b, int size_b)
 {
-	int temp;
-
-	temp = *i;
-	*i = *j;
-	*j = temp;
+	if ((*stack_b)->index == arr_b[size_b - 2])
+		return(1);
+	return(0);
 }
 
-int partition(int *arr, int low, int high)
+//find the largest number
+//rotate to the top of stack for ready to push
+static int	max_two_on_top(t_stack **stack_a, t_stack **stack_b, int *arr_b, int size_b)
 {
-	int pivot_number;
-	int i;
-	int j;
-
-	pivot_number = arr[high];
-	i = low - 1;
-	j = low;
-	while (j < high)
-	{
-		if (arr[j] < pivot_number)
-		{
-			i++;
-			ft_swap(&arr[i], &arr[j]);
-		}
-		j++;
-	}
-	ft_swap(&arr[i + 1], &arr[high]);
-	return (i + 1);
-}
-
-//Find the partition index(pivot)
-//first recursively sort the left half
-//second recursively sort the right half
-void quicksort(int *arr, int low, int high)
-{
-	int pivot;
-
-	if (low < high)
-	{
-		pivot = partition(arr, low, high);
-		quicksort(arr, low, pivot - 1);
-		quicksort(arr, pivot + 1, high);
-	}
-}
-
-void init_array(int *arr, t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	while (stack)
-	{
-		arr[i] = stack->number;
-		stack = stack->next;
-		i++;
-	}
-}
-
-int set_index_to_stack(int *arr,int low, int high, int key)
-{
-	int mid;
-
-	mid = 0;
-	while(low <= high)
-	{
-		mid = low + ((high - low) / 2);
-		if (arr[mid] == key)
-			return(key);
-		else if (arr[mid] < key)
-			low = mid + 1;
-		else
-			high = mid - 1;
-	}
-	return(-1);
-}
-
-void pre_sort(t_stack **stack_a)
-{
-	int *arr;
+	int max;
 	int index;
-	int size;
 
-	size = stack_size(*stack_a);
-	arr = (int *)malloc(sizeof(int) * size);
-	init_array(arr, stack_a);
-	quicksort(stack_a, 0, size - 1);
-	while (stack_a)
+	if(arr_b == NULL)
+		return (0);
+	max = size_b - 1;
+	index = set_index(*stack_b, max);
+	(*stack_a)->index = index;
+	while ((*stack_b)->index != max)
 	{
-		index = set_index_to_stack(arr, 0, size - 1, (*stack_a)->number);
-		if (index != -1)
-			(*stack_a)->index = index;
-		(*stack_a) = (*stack_a)->next;
+		if(second_max_push(stack_b, arr_b, size_b) == 0)
+		{
+			if(index < size_b / 2)
+				rb(stack_b);
+			else
+				rrb(stack_b);
+		}
+		else
+		{
+			pa(stack_a, stack_b);
+			return(1);
+		}
 	}
-	free(arr);
+	return (1);
 }
 
-void partition_in_b(t_stack **stack_a, t_stack **stack_b)
+static void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)
+{
+	int	*arr_b;
+	int size_b;
+
+	size_b = stack_size(*stack_b);
+	arr_b = (int *)malloc(sizeof(int) * size_b);
+	init_array(arr_b, *stack_b);
+	quicksort(arr_b, 0, size_b - 1);
+	while (size_b > 0)
+	{
+		if (max_two_on_top(stack_a, stack_b, arr_b, size_b) == 1)
+		{
+			pa(stack_a, stack_b);
+			size_b = stack_size(*stack_b);
+			if(size_b > 1 && (*stack_b)->index < (*stack_b)->next->index)
+				ss(stack_a, stack_b);
+			else
+				sa(stack_a);
+		}
+		else
+			pa(stack_a, stack_b);
+	}
+	free(arr_b);
+}
+
+static void move_a_to_b(t_stack **stack_a, t_stack **stack_b)
 {
 	int partition_size;
 	int n;
 	int pb_count;
 	int size_a;
 
-	partition_size = stack_size(*stack_a) / 20 + 30;
 	n = 1;
 	pb_count = 0;
-	size_a = stack_size(stack_a);
-	while (size_a > 0)
+	size_a = stack_size(*stack_a);
+	partition_size = (size_a / 20) + 30;
+	while (size_a >= 0)
 	{
-		if((*stack_a)->index < (partition_size * n))
+		if((*stack_a)->index <= (partition_size * n))
 		{
 			pb(stack_b, stack_a);
-			if ((*stack_a)->index < partition_size * n - (partition_size / 2))
+			if ((*stack_a)->index <= partition_size * n - (partition_size / 2))
 				rb(stack_b);
 			pb_count++;
 		}
@@ -139,6 +106,6 @@ void partition_in_b(t_stack **stack_a, t_stack **stack_b)
 void	sort_big(t_stack **stack_a, t_stack **stack_b)
 {
 	pre_sort(stack_a);
-	partition_in_b(stack_a, stack_b);
-	sort_back(stack_a, stack_b);
+	move_a_to_b(stack_a, stack_b);
+	move_b_to_a(stack_a, stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:45:07 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/03 15:59:07 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/07 20:01:32 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ int main(int argc, char **argv)
 	stack_b = NULL;
 	i = 0;
 	input = get_input(argc, argv);
-	while (input[i])
-	{
-		printf("%d: %s\n", i, input[i]);
-		i++;
-	}
+	// while (input[i])
+	// {
+	// 	printf("%d: %s\n", i, input[i]);
+	// 	i++;
+	// }
 	init_stack(&stack_a, input);
 	if (!stack_sorted(stack_a))
 	{
@@ -53,20 +53,23 @@ int main(int argc, char **argv)
 		else if (stack_size(stack_a) <= 15)
 			sort_small(&stack_a, &stack_b);
 		else
-			sort_big(stack_a, stack_b);
+			sort_big(&stack_a, &stack_b);
 	}
-	int size_a = stack_size(stack_a);
-	printf("size a: %d\n", size_a);
-	int size_b = stack_size(stack_b);
-	printf("size b: %d\n", size_b);
-	while(stack_a != NULL)
-	{
-		printf("a: %d\n", stack_a->number);
-		stack_a = stack_a->next;
-	}
-	while(stack_b != NULL)
-	{
-		printf("b: %d\n", stack_b->number);
-		stack_b = stack_b->next;
-	}
+	// int size_a = stack_size(stack_a);
+	// printf("size a: %d\n", size_a);
+	// int size_b = stack_size(stack_b);
+	// printf("size b: %d\n", size_b);
+	// while(stack_a != NULL)
+	// {
+	// 	printf("a: %d\n", stack_a->number);
+	// 	stack_a = stack_a->next;
+	// }
+	// while(stack_b != NULL)
+	// {
+	// 	printf("b: %d\n", stack_b->number);
+	// 	stack_b = stack_b->next;
+	// }
+	free_stack(&stack_a);
+	free_stack(&stack_b);
+	return(0);
 }
