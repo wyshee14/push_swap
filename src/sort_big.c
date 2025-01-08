@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 19:58:59 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/07 20:06:34 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/08 11:36:35 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	max_two_on_top(t_stack **stack_a, t_stack **stack_b, int *arr_b, int 
 			return(1);
 		}
 	}
-	return (1);
+	return (0);
 }
 
 static void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)
@@ -82,6 +82,7 @@ static void move_a_to_b(t_stack **stack_a, t_stack **stack_b)
 	int n;
 	int pb_count;
 	int size_a;
+	int size_b;
 
 	n = 1;
 	pb_count = 0;
@@ -92,7 +93,8 @@ static void move_a_to_b(t_stack **stack_a, t_stack **stack_b)
 		if((*stack_a)->index <= (partition_size * n))
 		{
 			pb(stack_b, stack_a);
-			if ((*stack_a)->index <= partition_size * n - (partition_size / 2))
+			size_b = stack_size(*stack_b);
+			if (size_b > 1 && (*stack_b)->number <= partition_size * n - (partition_size / 2))
 				rb(stack_b);
 			pb_count++;
 		}
