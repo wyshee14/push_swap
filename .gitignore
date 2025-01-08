@@ -1,0 +1,4 @@
+src/*.o
+libft/*.o
+libft/libft.a
+push_swap
