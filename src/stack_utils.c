@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:26:03 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/07 18:04:41 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/08 16:39:21 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,17 @@ t_stack *get_last_node(t_stack *last)
 }
 
 //set index and position of median in the stack
-int set_index(t_stack *stack, int target)
+int set_index(t_stack *stack, int target, char stack_type)
 {
 	int i;
 
 	i = 0;
-	while (stack->number != target && stack != NULL)
+	while (stack_type == 'a' && stack->number != target && stack != NULL)
+	{
+		stack = stack->next;
+		i++;
+	}
+	while (stack_type == 'b' && stack->index != target && stack != NULL)
 	{
 		stack = stack->next;
 		i++;

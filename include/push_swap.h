@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:12:04 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/07 18:14:29 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/08 16:39:32 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	sort_big(t_stack **stack_a, t_stack **stack_b);
 int	stack_size(t_stack *stack);
 int stack_sorted(t_stack *stack);
 t_stack *get_last_node(t_stack *last);
-int set_index(t_stack *stack, int target);
+int set_index(t_stack *stack, int target, char stack_type);
 void ft_swap(int *i, int *j);
 
 //Operations

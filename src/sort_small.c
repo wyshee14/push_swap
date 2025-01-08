@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 18:37:39 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/07 18:57:38 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/08 16:40:22 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void get_three(t_stack **stack_a, t_stack **stack_b)
 		min_node = find_min(*stack_a);
 		target = min_node->number;
 		// printf("target: %d\n", target);
-		i = set_index(*stack_a, target);
+		i = set_index(*stack_a, target, 'a');
 		// printf("i: %d\n", i);
 		median = stack_size(*stack_a) / 2;
 		// printf("median: %d\n", median);

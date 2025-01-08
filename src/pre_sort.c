@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 18:37:32 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/07 19:43:51 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/08 15:53:02 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void init_array(int *arr, t_stack *stack)
 	while (stack)
 	{
 		arr[i] = stack->number;
-		//printf("%d\n", arr[i]);
+		// printf("%d\n", arr[i]);
 		stack = stack->next;
 		i++;
 	}
@@ -88,20 +88,22 @@ void pre_sort(t_stack **stack_a)
 	int *arr;
 	int index;
 	int size;
+	t_stack	*head;
 
 	size = stack_size(*stack_a);
-	printf("size: %d\n", size);
+	head = *stack_a;
+	// printf("size: %d\n", size);
 	arr = (int *)malloc(sizeof(int) * size);
 	if(!arr)
 		return ;
 	init_array(arr, *stack_a);
-	int i = 0;
-	while (i < size)
-	{
-		// printf("Array: ");
-		// printf("%d ", arr[i]);
-		i++;
-	}
+	// int i = 0;
+	// while (i < size)
+	// {
+	// 	printf("Array: ");
+	// 	printf("%d ", arr[i]);
+	// 	i++;
+	// }
 	quicksort(arr, 0, size - 1);
 	while (stack_a != NULL && *stack_a != NULL)
 	{
@@ -111,7 +113,8 @@ void pre_sort(t_stack **stack_a)
 			(*stack_a)->index = index;
 		}
 		// printf("number: %d, index: %d\n", (*stack_a)->number, (*stack_a)->index);
-		stack_a = &(*stack_a)->next;
+		(*stack_a) = (*stack_a)->next;
 	}
+	*stack_a = head;
 	free(arr);
 }
