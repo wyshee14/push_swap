@@ -12,16 +12,16 @@
 
 #include "../include/push_swap.h"
 
-t_stack *find_max(t_stack *stack)
+t_stack	*find_max(t_stack *stack)
 {
-	t_stack *max_node;
+	t_stack	*max_node;
 	long	max;
 
-	if(!stack)
+	if (!stack)
 		return (NULL);
 	max = stack->number;
 	max_node = stack;
-	while(stack)
+	while (stack)
 	{
 		if (stack->number > max)
 		{
@@ -30,21 +30,19 @@ t_stack *find_max(t_stack *stack)
 		}
 		stack = stack-> next;
 	}
-	// printf("max: %ld\n", max);
-	// printf("max node: %d\n", max_node->number);
 	return (max_node);
 }
 
-t_stack *find_min(t_stack *stack)
+t_stack	*find_min(t_stack *stack)
 {
-	t_stack *min_node;
+	t_stack	*min_node;
 	long	min;
 
-	if(!stack)
+	if (!stack)
 		return (NULL);
 	min = stack->number;
 	min_node = stack;
-	while(stack)
+	while (stack)
 	{
 		if (stack->number < min)
 		{
@@ -53,17 +51,14 @@ t_stack *find_min(t_stack *stack)
 		}
 		stack = stack-> next;
 	}
-	// printf("min: %ld\n", min);
-	// printf("min node: %d\n", min_node->number);
 	return (min_node);
 }
 
 void	sort_three(t_stack **stack_a)
 {
-	t_stack *max_node;
+	t_stack	*max_node;
 
 	max_node = find_max(*stack_a);
-	//printf("max node: %d\n", max_node->number);
 	if ((*stack_a) == max_node)
 		ra(stack_a);
 	else if ((*stack_a)->next == max_node)
@@ -77,24 +72,21 @@ void	sort_three(t_stack **stack_a)
 //find the position of minimum in stack a
 //if position above median ra, else rra, until the target is at the top of stack
 //push to stack b(pb) until left 3 in stack a (in loop)
-static void get_three(t_stack **stack_a, t_stack **stack_b)
+static void	get_three(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *min_node;
-	int target;
-	int i;
-	int median;
+	t_stack	*min_node;
+	int		target;
+	int		i;
+	int		median;
 
 	i = 0;
 	while (stack_size(*stack_a) > 3)
 	{
 		min_node = find_min(*stack_a);
 		target = min_node->number;
-		// printf("target: %d\n", target);
 		i = set_index(*stack_a, target, 'a');
-		// printf("i: %d\n", i);
 		median = stack_size(*stack_a) / 2;
-		// printf("median: %d\n", median);
-		while((*stack_a)->number != target)
+		while ((*stack_a)->number != target)
 		{
 			if (i < median)
 				ra(stack_a);

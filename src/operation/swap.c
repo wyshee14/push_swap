@@ -17,7 +17,7 @@ void	swap(t_stack **stack)
 	t_stack	*first;
 	t_stack	*second;
 
-	if (*stack == NULL || (*stack) -> next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
 	first = *stack;
 	second = first -> next;
@@ -30,19 +30,19 @@ void	swap(t_stack **stack)
 	*stack = second;
 }
 
-void sa(t_stack **stack_a)
+void	sa(t_stack **stack_a)
 {
 	swap(stack_a);
 	ft_printf("sa\n");
 }
 
-void sb(t_stack **stack_b)
+void	sb(t_stack **stack_b)
 {
 	swap(stack_b);
 	ft_printf("sb\n");
 }
 
-void ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);

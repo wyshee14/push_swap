@@ -18,10 +18,10 @@
 // set the firstnode as the last node
 // detach the first node and update the pointer to the second node
 // update the pointer to rotate in the stack
-static void rotate(t_stack **stack)
+static void	rotate(t_stack **stack)
 {
-	t_stack *first_node;
-	t_stack *last_node;
+	t_stack	*first_node;
+	t_stack	*last_node;
 
 	if (*stack == NULL || ((*stack)->next) == NULL)
 		return ;

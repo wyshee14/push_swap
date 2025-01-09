@@ -14,19 +14,13 @@
 
 static void	reverse_rotate(t_stack **stack)
 {
-	t_stack *last_node;
+	t_stack	*last_node;
 
 	if (*stack == NULL || ((*stack)->next) == NULL)
 		return ;
 	last_node = *stack;
 	while (last_node->next != NULL)
 		last_node = last_node -> next;
-	//if(last_node->prev != NULL)
-	// printf("number: %d\n", (last_node)->number);
-	// if((last_node)->prev != NULL)
-	// 	printf("prev: %d\n", (last_node)->prev->number);
-	// if((last_node)->next != NULL)
-	// 	printf("next: %d\n", (last_node)->next->number);
 	last_node->prev->next = NULL;
 	last_node->next = *stack;
 	last_node->prev = NULL;

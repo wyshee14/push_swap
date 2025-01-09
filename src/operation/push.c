@@ -18,39 +18,41 @@
 // move pointer src to the second node, which will become the next node to push
 // check if the seconde exist, set the second as current for src
 // Detach the push_node from src
-// check dest is empty, assign first node in the stack, ensure is the first and last node
-// if dest is not empty, assign the push_node to the top, pointer dest move to push_node
+// check dest is empty, assign first node in the stack, 
+//ensure is the first and last node
+// if dest is not empty, assign the push_node to the top, 
+//pointer dest move to push_node
 static void	push(t_stack **dest, t_stack **src)
 {
-	t_stack *push_node;
+	t_stack	*push_node;
 
 	if (*src == NULL)
 		return ;
 	push_node = *src;
-	*src = (*src) -> next;
+	*src = (*src)->next;
 	if (*src != NULL)
-		(*src) -> prev = NULL;
-	push_node -> prev = NULL;
+		(*src)->prev = NULL;
+	push_node->prev = NULL;
 	if (*dest == NULL)
 	{
 		*dest = push_node;
-		push_node -> next = NULL;
+		push_node->next = NULL;
 	}
 	else
 	{
-		push_node -> next = *dest;
-		(*dest) -> prev = push_node;
+		push_node->next = *dest;
+		(*dest)->prev = push_node;
 		*dest = push_node;
 	}
 }
 
-void pa(t_stack **stack_a, t_stack **stack_b)
+void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	push (stack_a, stack_b);
 	ft_printf("pa\n");
 }
 
-void pb(t_stack **stack_b, t_stack **stack_a)
+void	pb(t_stack **stack_b, t_stack **stack_a)
 {
 	push (stack_b, stack_a);
 	ft_printf("pb\n");

@@ -12,11 +12,11 @@
 
 #include "../include/push_swap.h"
 
-static long ft_atol(const char *str)
+static long	ft_atol(const char *str)
 {
-	int i;
-	int sign;
-	long result;
+	int		i;
+	int		sign;
+	long	result;
 
 	i = 0;
 	sign = 1;
@@ -39,7 +39,7 @@ static long ft_atol(const char *str)
 	return (result);
 }
 
-static void append_node(t_stack **stack, long nbr)
+static void	append_node(t_stack **stack, long nbr)
 {
 	t_stack	*new_node;
 	t_stack	*last_node;
@@ -63,9 +63,12 @@ static void append_node(t_stack **stack, long nbr)
 		new_node -> prev = last_node;
 	}
 }
-void free_2d(char **av)
+
+void	free_2d(char **av)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (av[i])
 		free(av[i++]);
 	if (av != NULL)

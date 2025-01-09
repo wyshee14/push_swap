@@ -30,7 +30,7 @@ static char	*str_join(char **av)
 		free(join);
 		i++;
 	}
-	return(res);
+	return (res);
 }
 
 static char	**get_input(int ac, char **av)
@@ -38,7 +38,7 @@ static char	**get_input(int ac, char **av)
 	char	**split;
 	char	*res;
 
-	if(ac < 2)
+	if (ac < 2)
 	{
 		ft_putstr_fd("Error\n", 2);
 		exit(1);
@@ -52,7 +52,7 @@ static char	**get_input(int ac, char **av)
 	}
 }
 
-void validate_input(char **input)
+void	validate_input(char **input)
 {
 	int		count_arg;
 
@@ -66,7 +66,7 @@ void validate_input(char **input)
 	}
 }
 
-void do_sort(t_stack **stack_a, t_stack **stack_b)
+void	do_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	if (!stack_sorted(*stack_a))
 	{
@@ -79,7 +79,7 @@ void do_sort(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -92,5 +92,5 @@ int main(int argc, char **argv)
 	init_stack(&stack_a, input);
 	do_sort(&stack_a, &stack_b);
 	free_stack(&stack_a);
-	return(0);
+	return (0);
 }
