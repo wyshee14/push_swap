@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:11:53 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/08 21:59:53 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/09 17:03:08 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,27 @@ static void append_node(t_stack **stack, long nbr)
 		new_node -> prev = last_node;
 	}
 }
+void free_2d(char **av)
+{
+	int i = 0;
+	while (av[i])
+		free(av[i++]);
+	if (av != NULL)
+		free(av);
+}
 
-void	init_stack(t_stack **stack_a, char **argv)
+void	init_stack(t_stack **stack_a, char **input)
 {
 	long	nbr;
 	int		i;
 
 	i = 0;
-	while (argv[i])
+	while (input[i])
 	{
-		if (!is_numeric(argv[i]))
+		if (!is_numeric(input[i]))
 			print_error(stack_a);
-		nbr = ft_atol(argv[i]);
-		//printf("%li\n", nbr);
+		nbr = ft_atol(input[i]);
+		//printf("%"5 li\n", nbr);
 		if (nbr < INT_MIN || nbr > INT_MAX)
 			print_error(stack_a);
 		if (handle_duplicate((*stack_a), nbr))
@@ -83,4 +91,5 @@ void	init_stack(t_stack **stack_a, char **argv)
 		append_node(stack_a, nbr);
 		i++;
 	}
+	free_2d(input);
 }

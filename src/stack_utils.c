@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:26:03 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/08 16:39:21 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/09 16:29:17 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int stack_sorted(t_stack *stack)
 {
 	if (!stack)
 		return (0);
-	while (stack != NULL)
+	while (stack != NULL && stack->next != NULL)
 	{
 		if (stack->number > stack->next->number)
 			return(0);

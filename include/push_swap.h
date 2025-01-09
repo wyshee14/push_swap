@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:12:04 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/08 16:39:32 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/09 17:07:13 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_stack
 
 //init_stack.c
 void	init_stack(t_stack **stack, char **argv);
+void	free_2d(char **av);
 
 //error_handling.c
 int is_numeric(const char *str);

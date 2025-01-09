@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:06:44 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/31 16:39:56 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/09 17:19:01 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int is_numeric(const char *str)
 		i++;
 	while (str[i] != '\0')
 	{
-		if(str[i] >= '0' && str[i] <= '9')
-			return(1);
+		if(str[i] < '0' || str[i] > '9')
+			return(0);
 		i++;
 	}
-	return(0);
+	return(1);
 }
 
 int handle_duplicate(t_stack *stack, long nbr)
@@ -63,6 +63,6 @@ void free_stack(t_stack **stack)
 void print_error(t_stack **stack_a)
 {
 	free_stack(stack_a);
-	ft_printf("Error\n");
+	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
