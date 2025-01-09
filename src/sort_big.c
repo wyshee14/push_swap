@@ -12,15 +12,8 @@
 
 #include "../include/push_swap.h"
 
-//find the second largest number in stack b
-// static int second_max_push(t_stack **stack_b, int *arr_b, int size_b)
-// {
-// 	if ((*stack_b)->index == arr_b[size_b - 2])
-// 		return(1);
-// 	return(0);
-// }
-
 //find the largest number
+//find the second largest number in stack b
 //rotate to the top of stack for ready to push
 static int	max_two_on_top(t_stack **stack_a, t_stack **stack_b, int *arr_b, int size_b)
 {
@@ -28,30 +21,15 @@ static int	max_two_on_top(t_stack **stack_a, t_stack **stack_b, int *arr_b, int 
 	int index;
 	int swap;
 
-	// if (arr_b == NULL)
-	// 	return (0);
 	max = size_b - 1;
-	// printf("max: %d\n", max);
 	index = set_index(*stack_b, max, 'b');
-	// (stack_b)->index = index;
-	// printf("index: %d\n", index);
-	// printf("size_b: %d\n", size_b);
-	// while((*stack_b) != NULL)
-	// {
-	// 	printf("b: %d\n", (*stack_b)->index);
-	// 	(*stack_b) = (*stack_b)->next;
-	// }
 	swap = 0;
 	while ((*stack_b)->index != max)
 	{
-		// printf("index_b: %d\n", (*stack_b)->index);
-		// printf("size_b: %d\n", size_b);
 		if ((*stack_b)->index == (arr_b[size_b - 2]) - 1 && swap == 0)
 		{
-			// printf("If met\n");
 			pa(stack_a, stack_b);
 			swap = 1;
-			// return(swap);
 		}
 		else
 		{
@@ -67,17 +45,14 @@ static int	max_two_on_top(t_stack **stack_a, t_stack **stack_b, int *arr_b, int 
 static void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)
 {
 	int	*arr_b;
-	int size_b;
+	int	size_b;
 
 	size_b = stack_size(*stack_b);
 	arr_b = (int *)malloc(sizeof(int) * size_b);
 	init_array(arr_b, *stack_b);
 	quicksort(arr_b, 0, size_b - 1);
-	for (int j = 0; j < size_b; j++)
-		ft_printf("index: %d, value: %d\n", j, arr_b[j]);
 	while (size_b > 0)
 	{
-		// ft_printf("size_b: %d\n", size_b);
 		if (max_two_on_top(stack_a, stack_b, arr_b, size_b) == 1)
 		{
 			pa(stack_a, stack_b);
@@ -96,23 +71,16 @@ static void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)
 	free(arr_b);
 }
 
-static void move_a_to_b(t_stack **stack_a, t_stack **stack_b)
+static void move_a_to_b(t_stack **stack_a, t_stack **stack_b, int n)
 {
 	int partition_size;
-	int n;
 	int pb_count;
 	int size_a;
 	int size_b;
 
-	n = 1;
 	pb_count = 0;
 	size_a = stack_size(*stack_a);
 	partition_size = (size_a / 20) + 30;
-	// while((*stack_a) != NULL)
-	// {
-	// 	printf("a: %d\n", (*stack_a)->index);
-	// 	(*stack_a) = (*stack_a)->next;
-	// }
 	while (size_a > 0)
 	{
 		if((*stack_a)->index < (partition_size * n))
@@ -128,13 +96,12 @@ static void move_a_to_b(t_stack **stack_a, t_stack **stack_b)
 			ra(stack_a);
 		if (pb_count == partition_size * n)
 			n++;
-		// printf("size a: %d\n", size_a);
 	}
 }
 
 void	sort_big(t_stack **stack_a, t_stack **stack_b)
 {
 	pre_sort(stack_a);
-	move_a_to_b(stack_a, stack_b);
+	move_a_to_b(stack_a, stack_b, 1);
 	move_b_to_a(stack_a, stack_b);
 }

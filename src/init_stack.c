@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:11:53 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/09 17:03:08 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/09 18:44:40 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	init_stack(t_stack **stack_a, char **input)
 		if (!is_numeric(input[i]))
 			print_error(stack_a);
 		nbr = ft_atol(input[i]);
-		//printf("%"5 li\n", nbr);
 		if (nbr < INT_MIN || nbr > INT_MAX)
 			print_error(stack_a);
 		if (handle_duplicate((*stack_a), nbr))

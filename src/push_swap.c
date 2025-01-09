@@ -6,19 +6,37 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:45:07 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/09 17:29:41 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/09 18:49:09 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-char	**get_input(int ac, char **av)
+static char	*str_join(char **av)
 {
-	char **split;
-	char *res;
-	char *join;
-	char *temp;
-	int i;
+	char	*res;
+	char	*join;
+	char	*temp;
+	int		i;
+
+	i = 1;
+	res = ft_strdup("");
+	while (av[i])
+	{
+		temp = ft_strjoin(av[i], " ");
+		join = res;
+		res = ft_strjoin(join, temp);
+		free(temp);
+		free(join);
+		i++;
+	}
+	return(res);
+}
+
+static char	**get_input(int ac, char **av)
+{
+	char	**split;
+	char	*res;
 
 	if(ac < 2)
 	{
@@ -27,34 +45,18 @@ char	**get_input(int ac, char **av)
 	}
 	else
 	{
-		i = 1;
-		res = ft_strdup("");
-		while (av[i])
-		{
-			temp = ft_strjoin(av[i], " ");
-			join = res;
-			res = ft_strjoin(join, temp);
-			free(temp);
-			free(join);
-			i++;
-		}
+		res = str_join(av);
 		split = ft_split(res, ' ');
 		free(res);
 		return (split);
 	}
 }
 
-int main(int argc, char **argv)
+void validate_input(char **input)
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
-	int count_arg;
-	char	**input;
+	int		count_arg;
 
-	stack_a = NULL;
-	stack_b = NULL;
 	count_arg = 0;
-	input = get_input(argc, argv);
 	while (input[count_arg])
 		count_arg++;
 	if ((count_arg == 1 && is_numeric(input[0])) || count_arg == 0)
@@ -62,17 +64,33 @@ int main(int argc, char **argv)
 		free_2d(input);
 		exit(1);
 	}
-	init_stack(&stack_a, input);
-	if (!stack_sorted(stack_a))
+}
+
+void do_sort(t_stack **stack_a, t_stack **stack_b)
+{
+	if (!stack_sorted(*stack_a))
 	{
-		if (stack_size(stack_a) == 2)
-			sa(&stack_a);
-		else if (stack_size(stack_a) <= 15)
-			sort_small(&stack_a, &stack_b);
+		if (stack_size(*stack_a) == 2)
+			sa(stack_a);
+		else if (stack_size(*stack_a) <= 15)
+			sort_small(stack_a, stack_b);
 		else
-			sort_big(&stack_a, &stack_b);
+			sort_big(stack_a, stack_b);
 	}
+}
+
+int main(int argc, char **argv)
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	char	**input;
+
+	stack_a = NULL;
+	stack_b = NULL;
+	input = get_input(argc, argv);
+	validate_input(input);
+	init_stack(&stack_a, input);
+	do_sort(&stack_a, &stack_b);
 	free_stack(&stack_a);
-	free_stack(&stack_b);
 	return(0);
 }
