@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:12:36 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/08 15:31:30 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/13 15:43:39 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,26 @@ static void	reverse_rotate(t_stack **stack)
 	(*stack) = last_node;
 }
 
-void	rra(t_stack **stack_a)
+void	rra(t_stack **stack_a, int checker)
 {
 	reverse_rotate(stack_a);
-	ft_printf("rra\n");
+	if (checker == 1)
+		ft_printf("rra\n");
 }
 
-void	rrb(t_stack **stack_b)
+void	rrb(t_stack **stack_b, int checker)
 {
 	reverse_rotate(stack_b);
-	ft_printf("rrb\n");
+	if (checker == 1)
+		ft_printf("rrb\n");
 }
 
-void	rrr(t_stack **stack_a, t_stack **stack_b)
+void	rrr(t_stack **stack_a, t_stack **stack_b, int checker)
 {
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);
-	ft_printf("rrr\n");
+	if (checker == 1)
+		ft_printf("rrr\n");
 }
 
 // Main function

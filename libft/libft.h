@@ -6,18 +6,23 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 10:28:46 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/08 13:12:59 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/13 16:58:51 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <stddef.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -78,5 +83,9 @@ int		ft_printnbr(int n);
 int		ft_print_unsigned_nbr(unsigned int n);
 int		ft_printhexa(unsigned int n, char print);
 int		ft_printf(const char *fmt, ...);
+
+//get_next_line
+
+char	*get_next_line(int fd);
 
 #endif

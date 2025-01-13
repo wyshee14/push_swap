@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 19:58:59 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/08 17:42:53 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/13 15:55:14 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ int	max_two_top(t_stack **stack_a, t_stack **stack_b, int *arr_b, int size_b)
 	{
 		if ((*stack_b)->index == (arr_b[size_b - 2]) && swap == 0)
 		{
-			pa(stack_a, stack_b);
+			pa(stack_a, stack_b, 1);
 			swap = 1;
 		}
 		else
 		{
 			if (index < size_b / 2)
-				rb(stack_b);
+				rb(stack_b, 1);
 			else
-				rrb(stack_b);
+				rrb(stack_b, 1);
 		}
 	}
 	return (swap);
@@ -68,16 +68,16 @@ static void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)
 	{
 		if (max_two_top(stack_a, stack_b, arr_b, size_b) == 1)
 		{
-			pa(stack_a, stack_b);
+			pa(stack_a, stack_b, 1);
 			size_b -= 2;
 			if (size_b > 1 && (*stack_b)->index < (*stack_b)->next->index)
-				ss(stack_a, stack_b);
+				ss(stack_a, stack_b, 1);
 			else
-				sa(stack_a);
+				sa(stack_a, 1);
 		}
 		else
 		{
-			pa(stack_a, stack_b);
+			pa(stack_a, stack_b, 1);
 			size_b--;
 		}
 	}
@@ -98,16 +98,16 @@ static void	move_a_to_b(t_stack **stack_a, t_stack **stack_b, int n)
 	{
 		if ((*stack_a)->index < (partition * n))
 		{
-			pb(stack_b, stack_a);
+			pb(stack_b, stack_a, 1);
 			size_b = stack_size(*stack_b);
 			if (size_b > 1
 				&& (*stack_b)->index <= partition * n - (partition / 2))
-				rb(stack_b);
+				rb(stack_b, 1);
 			pb_count++;
 			size_a--;
 		}
 		else
-			ra(stack_a);
+			ra(stack_a, 1);
 		if (pb_count == partition * n)
 			n++;
 	}

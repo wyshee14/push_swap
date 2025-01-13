@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 18:37:39 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/08 16:40:22 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/13 15:55:45 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void	sort_three(t_stack **stack_a)
 
 	max_node = find_max(*stack_a);
 	if ((*stack_a) == max_node)
-		ra(stack_a);
+		ra(stack_a, 1);
 	else if ((*stack_a)->next == max_node)
-		rra(stack_a);
+		rra(stack_a, 1);
 	if ((*stack_a)->number > (*stack_a)->next->number)
-		sa(stack_a);
+		sa(stack_a, 1);
 }
 
 //push the minimum number to stack b
@@ -89,11 +89,11 @@ static void	get_three(t_stack **stack_a, t_stack **stack_b)
 		while ((*stack_a)->number != target)
 		{
 			if (i < median)
-				ra(stack_a);
+				ra(stack_a, 1);
 			else
-				rra(stack_a);
+				rra(stack_a, 1);
 		}
-		pb(stack_b, stack_a);
+		pb(stack_b, stack_a, 1);
 	}
 }
 
@@ -106,6 +106,6 @@ void	sort_small(t_stack **stack_a, t_stack **stack_b)
 		get_three(stack_a, stack_b);
 		sort_three(stack_a);
 		while (*stack_b != NULL)
-			pa(stack_a, stack_b);
+			pa(stack_a, stack_b, 1);
 	}
 }

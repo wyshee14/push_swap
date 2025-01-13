@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:06:40 by wshee             #+#    #+#             */
-/*   Updated: 2024/12/29 18:13:46 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/13 20:13:49 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,26 @@ void	swap(t_stack **stack)
 	*stack = second;
 }
 
-void	sa(t_stack **stack_a)
+void	sa(t_stack **stack_a, int checker)
 {
 	swap(stack_a);
-	ft_printf("sa\n");
+	if (checker == 1)
+		ft_printf("sa\n");
 }
 
-void	sb(t_stack **stack_b)
+void	sb(t_stack **stack_b, int checker)
 {
 	swap(stack_b);
-	ft_printf("sb\n");
+	if (checker == 1)
+		ft_printf("sb\n");
 }
 
-void	ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b, int checker)
 {
 	swap(stack_a);
 	swap(stack_b);
-	ft_printf("ss\n");
+	if (checker == 1)
+		ft_printf("ss\n");
 }
 
 // Main function

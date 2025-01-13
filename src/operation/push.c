@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:41:22 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/03 15:59:23 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/13 20:13:06 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 // move pointer src to the second node, which will become the next node to push
 // check if the seconde exist, set the second as current for src
 // Detach the push_node from src
-// check dest is empty, assign first node in the stack, 
+// check dest is empty, assign first node in the stack,
 //ensure is the first and last node
-// if dest is not empty, assign the push_node to the top, 
+// if dest is not empty, assign the push_node to the top,
 //pointer dest move to push_node
 static void	push(t_stack **dest, t_stack **src)
 {
@@ -46,16 +46,18 @@ static void	push(t_stack **dest, t_stack **src)
 	}
 }
 
-void	pa(t_stack **stack_a, t_stack **stack_b)
+void	pa(t_stack **stack_a, t_stack **stack_b, int checker)
 {
 	push (stack_a, stack_b);
-	ft_printf("pa\n");
+	if (checker == 1)
+		ft_printf("pa\n");
 }
 
-void	pb(t_stack **stack_b, t_stack **stack_a)
+void	pb(t_stack **stack_b, t_stack **stack_a, int checker)
 {
 	push (stack_b, stack_a);
-	ft_printf("pb\n");
+	if (checker == 1)
+		ft_printf("pb\n");
 }
 
 //Main function

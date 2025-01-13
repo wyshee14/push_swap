@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:12:04 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/09 17:07:13 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/13 16:31:05 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
+
+//push_swap.c
+char	*str_join(char **av);
+char	**get_input(int ac, char **av);
+void	validate_input(char **input);
+void	do_sort(t_stack **stack_a, t_stack **stack_b);
 
 //init_stack.c
 void	init_stack(t_stack **stack, char **argv);
@@ -60,16 +66,16 @@ int		set_index(t_stack *stack, int target, char stack_type);
 void	ft_swap(int *i, int *j);
 
 //Operations
-void	pa(t_stack **stack_a, t_stack **stack_b);
-void	pb(t_stack **stack_b, t_stack **stack_a);
-void	rra(t_stack **stack_a);
-void	rrb(t_stack **stack_b);
-void	rrr(t_stack **stack_a, t_stack **stack_b);
-void	ra(t_stack **stack_a);
-void	rb(t_stack **stack_b);
-void	rr(t_stack **stack_a, t_stack **stack_b);
-void	sa(t_stack **stack_a);
-void	sb(t_stack **stack_b);
-void	ss(t_stack **stack_a, t_stack **stack_b);
+void	pa(t_stack **stack_a, t_stack **stack_b, int checker);
+void	pb(t_stack **stack_b, t_stack **stack_a, int checker);
+void	rra(t_stack **stack_a, int checker);
+void	rrb(t_stack **stack_b, int checker);
+void	rrr(t_stack **stack_a, t_stack **stack_b, int checker);
+void	ra(t_stack **stack_a, int checker);
+void	rb(t_stack **stack_b, int checker);
+void	rr(t_stack **stack_a, t_stack **stack_b, int checker);
+void	sa(t_stack **stack_a, int checker);
+void	sb(t_stack **stack_b, int checker);
+void	ss(t_stack **stack_a, t_stack **stack_b, int checker);
 
 #endif

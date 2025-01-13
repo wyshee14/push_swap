@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/14 18:45:07 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/13 17:07:22 by wshee            ###   ########.fr       */
+/*   Created: 2025/01/13 13:56:53 by wshee             #+#    #+#             */
+/*   Updated: 2025/01/13 17:45:25 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-int	main(int argc, char **argv)
-{
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	char	**input;
+# include "push_swap.h"
+# include "../libft/libft.h"
 
-	stack_a = NULL;
-	stack_b = NULL;
-	input = get_input(argc, argv);
-	validate_input(input);
-	init_stack(&stack_a, input);
-	do_sort(&stack_a, &stack_b);
-	free_stack(&stack_a);
-	return (0);
-}
+void	free_error(t_stack **a, t_stack **b);
+void	execute_instructions(t_stack **a, t_stack **b, char *instructions);
+
+#endif
