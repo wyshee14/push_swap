@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:11:53 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/09 18:44:40 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/14 15:33:06 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ void	init_stack(t_stack **stack_a, char **input)
 	while (input[i])
 	{
 		if (!is_numeric(input[i]))
-			print_error(stack_a);
+			print_error(stack_a, input);
 		nbr = ft_atol(input[i]);
 		if (nbr < INT_MIN || nbr > INT_MAX)
-			print_error(stack_a);
+			print_error(stack_a, input);
 		if (handle_duplicate((*stack_a), nbr))
-			print_error(stack_a);
+			print_error(stack_a, input);
 		append_node(stack_a, nbr);
 		i++;
 	}

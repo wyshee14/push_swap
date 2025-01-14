@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:45:07 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/13 17:07:22 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/14 15:09:10 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	input = get_input(argc, argv);
-	validate_input(input);
 	init_stack(&stack_a, input);
 	do_sort(&stack_a, &stack_b);
 	free_stack(&stack_a);

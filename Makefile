@@ -6,7 +6,7 @@
 #    By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 20:31:35 by wshee             #+#    #+#              #
-#    Updated: 2025/01/13 17:28:51 by wshee            ###   ########.fr        #
+#    Updated: 2025/01/14 16:22:45 by wshee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC_DIR = src/
 OPERATION_DIR = $(SRC_DIR)operation/
 INC = -I$(INC_DIR)
 
-CC = cc #-g3 -O0 -fsanitize=address
+CC = cc -g3 #-O0 -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR)
 
 #Source Files

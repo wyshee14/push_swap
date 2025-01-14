@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:12:04 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/13 16:31:05 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/14 16:19:18 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "../libft/libft.h"
-# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -29,7 +28,6 @@ typedef struct s_stack
 //push_swap.c
 char	*str_join(char **av);
 char	**get_input(int ac, char **av);
-void	validate_input(char **input);
 void	do_sort(t_stack **stack_a, t_stack **stack_b);
 
 //init_stack.c
@@ -40,7 +38,7 @@ void	free_2d(char **av);
 int		is_numeric(const char *str);
 int		handle_duplicate(t_stack *stack, long nbr);
 void	free_stack(t_stack **stack);
-void	print_error(t_stack **stack_a);
+void	print_error(t_stack **stack_a, char **input);
 
 //pre_sort.c
 int		partition(int *arr, int low, int high);

@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:06:44 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/09 17:19:01 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/14 15:32:13 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_numeric(const char *str)
 	int	i;
 
 	i = 0;
-	if (str == NULL)
+	if (str == NULL || str[0] == '\0')
 		return (0);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
@@ -60,8 +60,9 @@ void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-void	print_error(t_stack **stack_a)
+void	print_error(t_stack **stack_a, char **input)
 {
+	free_2d(input);
 	free_stack(stack_a);
 	ft_putstr_fd("Error\n", 2);
 	exit(1);

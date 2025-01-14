@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:49:28 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/13 20:10:20 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/14 15:09:33 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	input = get_input(argc, argv);
-	validate_input(input);
 	init_stack(&stack_a, input);
 	len = stack_size(stack_a);
 	instructions = get_next_line(STDIN_FILENO);

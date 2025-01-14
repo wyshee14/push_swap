@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:06:58 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/13 17:38:13 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/14 15:18:15 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ char	*str_join(char **av)
 	res = ft_strdup("");
 	while (av[i])
 	{
+		if (av[i][0] == '\0')
+		{
+			free (res);
+			return (NULL);
+		}
 		temp = ft_strjoin(av[i], " ");
 		join = res;
 		res = ft_strjoin(join, temp);
@@ -39,27 +44,20 @@ char	**get_input(int ac, char **av)
 	char	*res;
 
 	if (ac < 2)
+	{
 		exit(1);
+	}
 	else
 	{
 		res = str_join(av);
+		if (res == NULL)
+		{
+			ft_putstr_fd("Error\n", 2);
+			exit (1);
+		}
 		split = ft_split(res, ' ');
 		free(res);
 		return (split);
-	}
-}
-
-void	validate_input(char **input)
-{
-	int		count_arg;
-
-	count_arg = 0;
-	while (input[count_arg])
-		count_arg++;
-	if ((count_arg == 1 && is_numeric(input[0])) || count_arg == 0)
-	{
-		free_2d(input);
-		exit(1);
 	}
 }
 
