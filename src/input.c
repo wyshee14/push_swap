@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:06:58 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/14 15:18:15 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/14 22:07:22 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ char	**get_input(int ac, char **av)
 	char	*res;
 
 	if (ac < 2)
-	{
 		exit(1);
-	}
 	else
 	{
 		res = str_join(av);

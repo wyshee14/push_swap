@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:06:44 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/14 15:32:13 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/14 21:42:51 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int	is_numeric(const char *str)
 	i = 0;
 	if (str == NULL || str[0] == '\0')
 		return (0);
-	if (str[i] == '-' || str[i] == '+')
+	if ((str[i] == '-' || str[i] == '+') && (str[1] < '0' || str[1] > '9'))
+		return (0);
+	if (str[0] == '-' || str[0] == '+')
 		i++;
 	while (str[i] != '\0')
 	{

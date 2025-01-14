@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:11:53 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/14 15:33:06 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/14 18:50:58 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	append_node(t_stack **stack, long nbr)
 
 	if (stack == NULL)
 		return ;
-	new_node = (t_stack *)malloc(sizeof(t_stack));
+	new_node = (t_stack *)malloc(sizeof(t_stack) * 1);
 	if (new_node == NULL)
 		return ;
 	new_node -> number = nbr;
