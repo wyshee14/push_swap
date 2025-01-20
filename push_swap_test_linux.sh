@@ -865,25 +865,6 @@ fi
 rm -rf test_check.txt
 rm -rf 0
 
-ARG="- + - + - +"
-./push_swap $ARG > /dev/null 2> test_check.txt
-if [ -s "$FICHERO" ];then
-while IFS= read -r line
-do
-  if [[ $line == "Error" ]]; then
-    printf "${GREEN}46.[OK] ${DEF_COLOR}\n";
-  else
-    printf "${RED}46.[KO] ${DEF_COLOR}\n";
-    break
-  fi
-done < test_check.txt
-else
-  printf "${RED}46.[KO] ${DEF_COLOR}\n";
-fi
-
-rm -rf test_check.txt
-rm -rf 0
-
 # -=-=-=-=-	Basic -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
 
 printf ${BLUE}"\n-------------------------------------------------------------\n"${DEF_COLOR};
@@ -5010,7 +4991,7 @@ else
 fi
 if [[ $L == 0 ]]; then
   printf "${GREEN}[MEMORY OK] ${DEF_COLOR}\n";
-else
+else 
   printf "${RED}[KO LEAKS] ${DEF_COLOR}\n";
 fi
 

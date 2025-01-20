@@ -6,7 +6,7 @@
 /*   By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 18:37:32 by wshee             #+#    #+#             */
-/*   Updated: 2025/01/08 15:53:02 by wshee            ###   ########.fr       */
+/*   Updated: 2025/01/20 14:51:23 by wshee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	partition(int *arr, int low, int high)
 //Find the partition index(pivot)
 //first recursively sort the left half
 //second recursively sort the right half
+//until only one  element is left in the array
 void	quicksort(int *arr, int low, int high)
 {
 	int	pivot;
@@ -67,6 +68,10 @@ void	init_array(int *arr, t_stack *stack)
 	}
 }
 
+//find the position of the index number in the stack
+//until it finds the mid
+//if is at the left side then search the left only
+//if is at the right side then search the right only
 int	set_index_to_stack(int *arr, int low, int high, int key)
 {
 	int	mid;
@@ -76,9 +81,7 @@ int	set_index_to_stack(int *arr, int low, int high, int key)
 	{
 		mid = low + ((high - low) / 2);
 		if (arr[mid] == key)
-		{
 			return (mid);
-		}
 		else if (arr[mid] < key)
 			low = mid + 1;
 		else

@@ -6,7 +6,7 @@
 #    By: wshee <wshee@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 20:31:35 by wshee             #+#    #+#              #
-#    Updated: 2025/01/14 16:22:45 by wshee            ###   ########.fr        #
+#    Updated: 2025/01/20 14:59:19 by wshee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ SRC = 	$(SRC_DIR)error_handling.c	$(SRC_DIR)init_stack.c	$(SRC_DIR)pre_sort.c	$(
 
 PUSH_SWAP = $(SRC_DIR)push_swap.c
 
-BONUS = $(SRC_DIR)checker.c
+BONUS = $(SRC_DIR)checker_bonus.c
 
 OBJ_SRC = $(SRC:.c=.o)
 OBJ_PUSH_SWAP = $(PUSH_SWAP:.c=.o)
