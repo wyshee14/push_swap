@@ -1,5 +1,5 @@
 # 🔀Push Swap
-This project is about sorting algorithm and optimization to get less number of steps to sort 100 numbers below 700 steps and 500 numbers below 5500 steps.
+This project is about sorting algorithm and optimization to get less number of steps to sort **100** numbers below **700** steps and **500** numbers below **5500** steps.
 
 # 📝Step by step guide
 ## 💣Initialize stack
@@ -39,7 +39,8 @@ Error\n
 
 ## 💣Choose algorithm
 ### 1. Quicksort 
-+ Principle: divide and conquer\
++ Principle: divide and conquer
++ Efficient in large data sets\
 **Step 1:** Choose pivot (the last element of array)\
 **Step 2:** Create partition of the array (based on position of pivot)\
 **Step 3:** Recursion (sub-array after partition)\
@@ -68,3 +69,75 @@ The sorted subarrays are merged back together in sorted order. The process conti
 ### 7. Binary search (searching algorithm)
 + give index for sorted numbers in array\
 ![Image](https://github.com/user-attachments/assets/ac719a97-607a-4738-8560-044fb55e4f31)
+
+## 💣Sorting
+Now, assume that we have:\
+**Stack A:** Unsorted numbers in a double linked list\
+**Stack B:** NULL\
+
+
+### Sort 3 numbers
+Number of steps <= 2
+```
+//find max node
+if (head == max)
+    ra;
+else if(head->next == max)
+    rra;
+if (head > head->next)
+    sa;
+```
+### Sort less than 15 numbers
+Pseudocode:
+```
+// find min node (set as target)
+// find median (stack_size / 2)
+// find the position of the target in the list
+// do ops until the min node reach top of stack A
+if (position < median)
+    ra;
+else
+    rra;
+//push the min node to stack B until 3 is left in stack A
+    pb;
+```
+
+### Sort more than 15 numbers
+pre-sort:
+```
+// Store the numbers into an integer array
+// Use quicksort to sort the numbers in array
+// Assign index (using binary search) to the position of the corresponding numbers in the linked list 
+// use the index to sort the numbers instead of its value
+```
+Move from **A** to **B**:
+```
+// Linked list is divided into partition based on index
+// For 100 numbers, will be divided into (1-30), (31-60), (61-90), (91-100)
+//push to b if is in the range of 1-30
+//if not in first partition rotate to below
+if (index < partition) 
+    pb;
+else 
+    ra; 
+// after push to B, check whether is above or below median
+if (index < median)
+    rrb;
+else
+    rb;
+// continue for each partition until all nodes is move to B
+``` 
+Move from **B** to **A**:
+```
+//Store the index in B in an integer array
+//quicksort
+//get the index
+// look for the max node in B
+// ready to push to B
+pa;
+//if the two max node is push to A
+//check for B
+if (head_b < head_b->next)
+    ss;
+else
+    sa;
