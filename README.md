@@ -4,17 +4,22 @@ This project is about sorting algorithm and optimization in stack to get less nu
 # 📝Step by step guide
 ## 💣Initialize stack
 There are two stacks which is **stack A** and **stack B**.\
-Stack A will be the sorted numbers.\
-Stack B must be NULL after sorting.\
+**Before Sorting:**\
+Stack A: unsorted numbers.\
+Stack B: NULL\
+**After sorting:**\
+Stack A: unsorted numbers.\
+Stack B: NULL\
 ![Image](https://github.com/user-attachments/assets/28d9a17a-fc1d-4806-a3cb-55421c7c3cb7)
 
 In this project, I choose to use **double linked list** for the stack. \
 ![Image](https://github.com/user-attachments/assets/207a9c16-4c4d-4199-b36a-dca08129f182) \
-Every argument passed (int) is stored in each node.\
-In the following argument given, the **first number** is the **head** of the linked list, and the subsequent argument is appended to the list from top to bottom.
+Every argument passed (convert to int) is stored in each node.\
+In the following argument given, the **first number** is the **head** of the linked list, and the subsequent argument is appended to the list from **top to bottom**.
 ```
 ./push_swap 4 2 3 5 1
 ```
+
 ## 💣Handle argument error
 + arg not integer
 + arg larger/ smaller than int max/min
@@ -57,10 +62,10 @@ The sorted subarrays are merged back together in sorted order. The process conti
 ![Image](https://github.com/user-attachments/assets/d749070e-0c8a-4d20-b116-481fab5beaf3)
 
 ### 3. Bubble sort
++ less effective for large data sets\
 **Step 1:** Compare the first number with the next number\
 **Step 2:** Move the larger number to the right of the array\
 **Step 3:** Repeat until the number are sorted\
-+ less effective for large data sets
 ![Image](https://github.com/user-attachments/assets/9d6db702-f27d-4db0-b02b-e950e2ec30eb)
 
 ### 4. Insertion sort
@@ -73,8 +78,8 @@ The sorted subarrays are merged back together in sorted order. The process conti
 ## 💣Sorting
 Now, assume that we have:
 ```
-**Stack A:** Unsorted numbers in a double linked list
-**Stack B:** NULL
+Stack A: Unsorted numbers in a double linked list
+Stack B: NULL
 ```
 
 ### Sort 3 numbers
@@ -88,6 +93,7 @@ else if(head->next == max)
 if (head > head->next)
     sa;
 ```
+
 ### Sort less than 15 numbers
 Pseudocode:
 ```
@@ -111,6 +117,7 @@ Pre-sort:
 // Assign index (using binary search) to the position of the corresponding numbers in the linked list 
 // use the index to sort the numbers instead of its value
 ```
+
 Move from **A** to **B**:
 ```
 // Linked list is divided into partition based on index
@@ -128,6 +135,7 @@ else
     rb;
 // continue for each partition until all nodes is move to B
 ``` 
+
 Move from **B** to **A**:
 ```
 //Store the index in B in an integer array
