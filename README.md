@@ -4,12 +4,6 @@ This project is about sorting algorithm and optimization in stack to get less nu
 # 📝Step by step guide
 ## 💣Initialize stack
 There are two stacks which is **stack A** and **stack B**.\
-**Before Sorting:**\
-Stack A: unsorted numbers.\
-Stack B: NULL\
-**After sorting:**\
-Stack A: unsorted numbers.\
-Stack B: NULL\
 ![Image](https://github.com/user-attachments/assets/28d9a17a-fc1d-4806-a3cb-55421c7c3cb7)
 
 In this project, I choose to use **double linked list** for the stack. \
