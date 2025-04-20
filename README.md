@@ -1,5 +1,5 @@
 # 🔀Push Swap
-This project is about sorting algorithm and optimization to get less number of steps to sort **100** numbers below **700** steps and **500** numbers below **5500** steps.
+This project is about sorting algorithm and optimization in stack to get less number of steps to sort **100** numbers below **700** steps and **500** numbers below **5500** steps.
 
 # 📝Step by step guide
 ## 💣Initialize stack
@@ -19,7 +19,7 @@ In the following argument given, the **first number** is the **head** of the lin
 + arg not integer
 + arg larger/ smaller than int max/min
 + duplicate values\
-**Must Return:** 
+**Return:** 
 ```
 Error\n
 ```
@@ -60,7 +60,7 @@ The sorted subarrays are merged back together in sorted order. The process conti
 **Step 1:** Compare the first number with the next number\
 **Step 2:** Move the larger number to the right of the array\
 **Step 3:** Repeat until the number are sorted\
-+ slow for large data sets\
++ less effective for large data sets
 ![Image](https://github.com/user-attachments/assets/9d6db702-f27d-4db0-b02b-e950e2ec30eb)
 
 ### 4. Insertion sort
@@ -71,10 +71,11 @@ The sorted subarrays are merged back together in sorted order. The process conti
 ![Image](https://github.com/user-attachments/assets/ac719a97-607a-4738-8560-044fb55e4f31)
 
 ## 💣Sorting
-Now, assume that we have:\
-**Stack A:** Unsorted numbers in a double linked list\
-**Stack B:** NULL\
-
+Now, assume that we have:
+```
+**Stack A:** Unsorted numbers in a double linked list
+**Stack B:** NULL
+```
 
 ### Sort 3 numbers
 Number of steps <= 2
@@ -103,7 +104,7 @@ else
 ```
 
 ### Sort more than 15 numbers
-pre-sort:
+Pre-sort:
 ```
 // Store the numbers into an integer array
 // Use quicksort to sort the numbers in array
